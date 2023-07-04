@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate,useLocation} from "react-router-dom";
 import { useState, useEffect } from "react";
-const Spinner = () => {
-  const [count, setCount] = useState(5);
+const Spinner = ({path = "login"}) => {
+  const [count, setCount] = useState(3);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -12,7 +12,7 @@ const Spinner = () => {
     }, 1000);
 
     // redirect once count is equal to 0
-    count === 0 && navigate("/login",{
+    count === 0 && navigate(`/${path}`,{
       state:location.pathname
     });
 
@@ -20,7 +20,7 @@ const Spinner = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [count, navigate,location]);
+  }, [count, navigate,location,path]);
   return (
     <>
       <div
