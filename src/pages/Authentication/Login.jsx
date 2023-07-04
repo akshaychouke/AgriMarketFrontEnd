@@ -5,12 +5,12 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.css";
-
+import { useAuth } from "../../context/auth";
 //coponent to login a user
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [auth, setAuth] = useAuth(); //custom hook
   const navigate = useNavigate();
   const API_URL = "http://localhost:8080";
   //function to handle the submit button
@@ -25,6 +25,16 @@ const Login = () => {
       //to check if the response is success or not
       if (response.data.success) {
         toast.success(response.data.message);
+        //setting the auth context
+        setAuth({
+          ...auth,
+          user: response.data.user,
+          token: response.data.token,
+        });
+
+        //saving the response in local storage
+        localStorage.setItem("auth", JSON.stringify(response.data));
+
         //redirecting to login page after 2 seconds of successful registration
         setTimeout(() => {
           navigate("/");
