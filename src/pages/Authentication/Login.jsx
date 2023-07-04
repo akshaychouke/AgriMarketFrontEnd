@@ -3,7 +3,7 @@ import { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation} from "react-router-dom";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
 //coponent to login a user
@@ -11,7 +11,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth(); //custom hook
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const location = useLocation(); //to get the location of the previous page
   const API_URL = "http://localhost:8080";
   //function to handle the submit button
   const handleSubmit = async (e) => {
@@ -37,7 +38,7 @@ const Login = () => {
 
         //redirecting to login page after 2 seconds of successful registration
         setTimeout(() => {
-          navigate("/");
+          navigate(location.state || "/");
         }, 2000);
       } else {
         toast.error(response.data.message);
