@@ -12,6 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [answer, setAnswer] = useState("");
   const navigate = useNavigate();
 
   const API_URL = "http://localhost:8080";
@@ -26,6 +27,7 @@ const Register = () => {
         password,
         phone,
         address,
+        answer,
       });
 
       //to check if the response is success or not
@@ -100,6 +102,17 @@ const Register = () => {
               placeholder="Enter your Address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="answer"
+              placeholder="Enter your best friend's name"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
               required
             />
           </div>

@@ -3,42 +3,36 @@ import { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate,useLocation} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.css";
-import { useAuth } from "../../context/auth";
 //coponent to login a user
-const Login = () => {
+const ForgotPass = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [auth, setAuth] = useAuth(); //custom hook
-  const navigate = useNavigate(); 
-  const location = useLocation(); //to get the location of the previous page
+  const [newpassword, setNewPassword] = useState("");
+  const [answer, setAnswer] = useState("");
+  const navigate = useNavigate();
+
   const API_URL = "http://localhost:8080";
   //function to handle the submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/api/v1/auth/login`, {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${API_URL}/api/v1/auth/forgot-password`,
+        {
+          email,
+          answer,
+          newpassword,
+        }
+      );
 
       //to check if the response is success or not
       if (response.data.success) {
         toast.success(response.data.message);
-        //setting the auth context
-        setAuth({
-          ...auth,
-          user: response.data.user,
-          token: response.data.token,
-        });
-
-        //saving the response in local storage
-        localStorage.setItem("auth", JSON.stringify(response.data)); 
 
         //redirecting to login page after 2 seconds of successful registration
         setTimeout(() => {
-          navigate(location.state || "/");
+          navigate("/login");
         }, 2000);
       } else {
         toast.error(response.data.message);
@@ -49,10 +43,10 @@ const Login = () => {
     }
   };
   return (
-    <Layout title="Register">
+    <Layout title="Forgot Password">
       <div className="form-container" style={{ minHeight: "90vh" }}>
         <form onSubmit={handleSubmit}>
-          <h4 className="title">Login Here </h4>
+          <h4 className="title">Reset Password </h4>
           <div className="mb-3">
             <input
               type="email"
@@ -66,27 +60,33 @@ const Login = () => {
           </div>
           <div className="mb-3">
             <input
+              type="text"
+              className="form-control"
+              id="answer"
+              placeholder="what is your best friend's name?"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
               type="password"
               className="form-control"
-              id="password"
-              placeholder="Enter your Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              id="newpassword"
+              placeholder="Enter your New Password"
+              value={newpassword}
+              onChange={(e) => setNewPassword(e.target.value)}
               required
             />
           </div>
           <button type="submit" className="btn btn-primary">
-            Login
+            Reset
           </button>
-          <div className="mb-3 mt-3">
-          <button type="submit" className="btn btn-primary" onClick={()=>{navigate("/forgot-password")}}>
-            Forgot Password
-          </button>
-          </div>
         </form>
       </div>
     </Layout>
   );
 };
 
-export default Login;
+export default ForgotPass;
