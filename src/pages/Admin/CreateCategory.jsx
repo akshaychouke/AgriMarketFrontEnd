@@ -38,7 +38,7 @@ const CreateCategory = () => {
     try {
       const { data } = await axios.get(`${API_URL}/get-Categories`);
       if (data.success === true) {
-        setCategories(data.categories);
+        setCategories(data?.categories);
         console.log("categories", data.categories);
       }
     } catch (error) {
