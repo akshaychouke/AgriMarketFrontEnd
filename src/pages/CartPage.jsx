@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
+import DropIn from "braintree-web-drop-in-react";
 const CartPage = () => {
   const [cart, setCart] = useCart();
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
-
+  const [clientToken, setClientToken] = useState("");
+  const [instance, setInstance] = useState("");
+  const [loading, setLoading] = useState(false);
   //count total price of cart items
   const getTotal = () => {
     let total = 0;
@@ -32,6 +36,45 @@ const CartPage = () => {
       toast.error("Error while removing cart item");
     }
   };
+
+  //get payment gateway token
+  const getToken = async () => {
+    try {
+      const { data } = await axios.get(
+        "http://localhost:8080/api/v1/product/braintree/token"
+      );
+      setClientToken(data.clientToken);
+    } catch (error) {
+      console.log("error while getting token", error.message);
+    }
+  };
+
+  useEffect(() => {
+    getToken();
+  }, [auth?.token]);
+
+  //handle payment
+  const handlePayment = async () => {
+    try {
+      setLoading(true);
+      const { nonce } = await instance.requestPaymentMethod();
+      const { data } = await axios.post(
+        "http://localhost:8080/api/v1/product/braintree/payment",
+        {
+          nonce,
+          cart,
+        }
+      );
+      setLoading(false);
+      localStorage.removeItem("cart");
+      setCart([]);
+      navigate("/dashboard/user/orders");
+      toast.success("Payment successfull");
+    } catch (error) {
+      console.log("error while making payment", error.message);
+      setLoading(false);
+    }
+  };
   return (
     <Layout>
       <div className="container">
@@ -51,7 +94,7 @@ const CartPage = () => {
         <div className="row">
           <div className="col-md-8">
             {cart?.map((item) => (
-              <div className="row mb-2 p-3 card flex-row">
+              <div className="row mb-2 p-3 card flex-row" key={item._id}>
                 <div className="col-md-4">
                   {" "}
                   <img
@@ -113,6 +156,30 @@ const CartPage = () => {
                 )}
               </div>
             )}
+            <div className="mt-2">
+              {!clientToken || !cart?.length ? (
+                ""
+              ) : (
+                <>
+                  <DropIn
+                    options={{
+                      authorization: clientToken,
+                      paypal: {
+                        flow: "vault",
+                      },
+                    }}
+                    onInstance={(instance) => setInstance(instance)}
+                  />
+                  <button
+                    className="btn btn-primary"
+                    onClick={handlePayment}
+                    disabled={loading || !instance || !auth?.user?.address}
+                  >
+                    {loading ? "Loading..." : "Pay Now"}
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
