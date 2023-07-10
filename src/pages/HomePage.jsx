@@ -132,13 +132,7 @@ const HomePage = () => {
   }, [checked, radio]);
   return (
     <Layout title="Ecommerce App - Home">
-      {/* banner image */}
-      {/* <img
-        src="/images/banner.png"
-        className="banner-img"
-        alt="bannerimage"
-        width={"100%"}
-      /> */}
+      {/* slider on main screen */}
       <SliderImage />
 
       <div className="container-fluid row mt-3 home-page">

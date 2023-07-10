@@ -22,7 +22,7 @@ const Contact = () => {
             available 24X7
           </p>
           <p className="mt-3">
-            <BiMailSend /> : www.help@ecommerceapp.com
+            <BiMailSend /> : www.help@agrimarket.com
           </p>
           <p className="mt-3">
             <BiPhoneCall /> : 012-3456789

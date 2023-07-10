@@ -6,19 +6,15 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Checkbox } from "antd";
 
-
 const Products = () => {
   const [products, setProducts] = useState([]);
   const API_URL = "http://localhost:8080/api/v1/product";
 
-  
   //to get all products
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(`${API_URL}/get-products`);
       setProducts(data.products);
-      console.log("All Products", data.products);
-      toast.success("All Products are loaded");
     } catch (error) {
       console.log("Error in getting all products", error);
       toast.error("Error in getting all products");
@@ -40,7 +36,11 @@ const Products = () => {
             <h1 className="text-center">All Products List</h1>
             <div className="d-flex flex-wrap">
               {products.map((product) => (
-                <Link to={`/dashboard/admin/update-product/${product.slug}`} key={product._id} className="product-link">
+                <Link
+                  to={`/dashboard/admin/update-product/${product.slug}`}
+                  key={product._id}
+                  className="product-link"
+                >
                   <div className="card m-2" style={{ width: "18rem" }}>
                     <img
                       src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}

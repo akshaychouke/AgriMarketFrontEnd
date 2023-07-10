@@ -34,7 +34,7 @@ const Header = () => {
                 alt="titleImage"
                 style={{ height: "40px", marginRight: "10px" }}
               />
-              <span> Ecommerce App</span>
+              <span>AgriMarket</span>
             </Link>
 
             <button
