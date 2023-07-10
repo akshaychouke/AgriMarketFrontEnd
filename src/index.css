@@ -5,12 +5,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body {
+}
 /* font-family: 'Poppins', sans-serif; */
 /* font-family: 'Playfair Display', serif; */
 
 /* //navbar css */
 .navbar {
+  background-color: #54b435 !important;
   font-family: "Poppins", sans-serif;
   font-size: 17px;
   line-height: 26px;
@@ -18,10 +20,15 @@
   box-shadow: 0 8px 6px -6px gray;
   --webkit-box-shadow: 0 8px 6px -6px gray;
   border-bottom: solid gray !important;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .nav-link {
   font-weight: 300 !important;
+  color: white !important;
 }
 
 .active {
@@ -141,4 +148,11 @@
   background-color: #434343 !important;
   color: white;
   padding: 20px 0px;
+}
+
+/* =========== slider desing */
+.carousel-item > img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
 }

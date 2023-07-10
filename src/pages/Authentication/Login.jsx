@@ -3,7 +3,7 @@ import { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate,useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
 //coponent to login a user
@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth(); //custom hook
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const location = useLocation(); //to get the location of the previous page
   const API_URL = "http://localhost:8080";
   //function to handle the submit button
@@ -34,7 +34,7 @@ const Login = () => {
         });
 
         //saving the response in local storage
-        localStorage.setItem("auth", JSON.stringify(response.data)); 
+        localStorage.setItem("auth", JSON.stringify(response.data));
 
         //redirecting to login page after 2 seconds of successful registration
         setTimeout(() => {
@@ -79,9 +79,15 @@ const Login = () => {
             Login
           </button>
           <div className="mb-3 mt-3">
-          <button type="submit" className="btn btn-primary" onClick={()=>{navigate("/forgot-password")}}>
-            Forgot Password
-          </button>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={() => {
+                navigate("/forgot-password");
+              }}
+            >
+              Forgot Password
+            </button>
           </div>
         </form>
       </div>

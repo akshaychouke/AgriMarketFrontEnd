@@ -6,7 +6,8 @@ import toast from "react-hot-toast";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
-
+import { FaShoppingCart } from "react-icons/fa";
+import { GiFarmTractor } from "react-icons/gi";
 const Header = () => {
   const categories = useCategory();
   const [auth, setAuth] = useAuth();
@@ -28,7 +29,12 @@ const Header = () => {
         <div className="container-fluid d-flex justify-content-between">
           <div>
             <Link to="/" className="navbar-brand">
-              🛒 Eccommerce App
+              <img
+                src="/images/farmer_3319221.png"
+                alt="titleImage"
+                style={{ height: "40px", marginRight: "10px" }}
+              />
+              <span> Ecommerce App</span>
             </Link>
 
             <button
@@ -142,9 +148,13 @@ const Header = () => {
 
                 <li className="nav-item">
                   <NavLink to="/cart" className="nav-link">
-                    <Badge count={cart?.length} showZero offset={[10, -5]}>
-                      Cart
-                    </Badge>
+                    {/* Cart */}
+                    <FaShoppingCart />
+                    <Badge
+                      count={cart?.length}
+                      showZero
+                      offset={[10, -5]}
+                    ></Badge>
                   </NavLink>
                 </li>
               </ul>

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
-
+import SliderImage from "./SliderImage";
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useCart();
@@ -133,12 +133,14 @@ const HomePage = () => {
   return (
     <Layout title="Ecommerce App - Home">
       {/* banner image */}
-      <img
+      {/* <img
         src="/images/banner.png"
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
-      />
+      /> */}
+      <SliderImage />
+
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           {/* filter for categories */}
@@ -180,10 +182,7 @@ const HomePage = () => {
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((product) => (
-              <div
-                key={product._id}
-                className="card m-2"
-              >
+              <div key={product._id} className="card m-2">
                 <img
                   src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
                   className="card-img-top"
