@@ -3,6 +3,8 @@ import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "../styles/ProductDetailsStyles.css";
+
 const ProductDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -38,10 +40,9 @@ const ProductDetails = () => {
     setRelatedProducts(data?.products);
   };
   return (
-    <Layout>
-      <div className="row container mt-2">
+    <Layout title={"Product Details"}>
+      <div className="row container product-details">
         <div className="col-md-6">
-          {" "}
           <img
             src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
@@ -50,11 +51,18 @@ const ProductDetails = () => {
             width={"350px"}
           />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6 product-details-info">
           <h1 className="text-center">Product Details</h1>
+          <hr />
           <h6>Name : {product.name}</h6>
           <h6>Description : {product.description}</h6>
-          <h6>Price : ${product.price}</h6>
+          <h6>
+            Price :
+            {product?.price?.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </h6>
           <h6>Category : {product.category?.name}</h6>
           <h6>Quantity : {product.quantity}</h6>
           <h6>Shipping : {product.shipping ? "Yes" : "No"}</h6>
@@ -62,37 +70,43 @@ const ProductDetails = () => {
         </div>
       </div>
       <hr />
-      <div className="row container">
-        <h5>Related Products</h5>
+      <div className="row container similar-products">
+        <h4>Similar Products ➡️</h4>
         {relatedProducts?.length < 1 && (
           <p className="text-center">No similar product found</p>
         )}
         <div className="d-flex flex-wrap">
           {relatedProducts?.map((product) => (
-            <div key={product._id} className="product-link">
-              <div className="card m-2" style={{ width: "18rem" }}>
-                <img
-                  src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
-                  className="card-img-top"
-                  alt={product.name}
-                />
-                <div className="card-body">
+            <div key={product._id} className="card m-2">
+              <img
+                src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                className="card-img-top"
+                alt={product.name}
+              />
+              <div className="card-body">
+                <div className="card-name-price">
                   <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">
-                    {product.description.substring(0, 30)}...
-                  </p>
-                  <p className="card-text">$ {product.price}</p>
-                  <div>
-                    <button
-                      className="btn btn-primary ms-1"
-                      onClick={() => navigate(`/product/${product.slug}`)}
-                    >
-                      See Details
-                    </button>
-                    <button className="btn btn-secondary ms-1">
-                      Add to Cart
-                    </button>
-                  </div>
+                  <h5 className="card-title card-price">
+                    {product.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </h5>
+                </div>
+                <p className="card-text">
+                  {product.description.substring(0, 30)}...
+                </p>
+
+                <div className="card-name-price">
+                  <button
+                    className="btn btn-primary ms-1"
+                    onClick={() => navigate(`/product/${product.slug}`)}
+                  >
+                    See Details
+                  </button>
+                  <button className="btn btn-secondary ms-1">
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>

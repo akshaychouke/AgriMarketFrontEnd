@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.css";
-//coponent to login a user
+
+//coponent to reset password of a user
 const ForgotPass = () => {
   const [email, setEmail] = useState("");
   const [newpassword, setNewPassword] = useState("");

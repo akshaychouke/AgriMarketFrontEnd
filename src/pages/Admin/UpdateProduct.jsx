@@ -119,7 +119,7 @@ const UpdateProduct = () => {
   };
   return (
     <Layout title="Dashboard - Update Product">
-      <div className="container-fluid m-3 p-3">
+      <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
@@ -173,7 +173,7 @@ const UpdateProduct = () => {
                     <img
                       src={`http://localhost:8080/api/v1/product/product-photo/${id}`}
                       alt="product Image"
-                      height={"100px"}
+                      height={"150px"}
                       className="img img-responsive"
                     />
                   </div>

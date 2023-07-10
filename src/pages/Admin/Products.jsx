@@ -5,6 +5,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Checkbox } from "antd";
+
+
 const Products = () => {
   const [products, setProducts] = useState([]);
   const API_URL = "http://localhost:8080/api/v1/product";
@@ -29,7 +31,7 @@ const Products = () => {
 
   return (
     <Layout title="Products">
-      <div className="container-fluid m-3 p-3">
+      <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />

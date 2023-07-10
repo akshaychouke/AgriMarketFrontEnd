@@ -6,6 +6,9 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cart";
+import { AiOutlineReload } from "react-icons/ai";
+import "../styles/Homepage.css";
+
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useCart();
@@ -129,8 +132,15 @@ const HomePage = () => {
   }, [checked, radio]);
   return (
     <Layout title="Ecommerce App - Home">
-      <div className="row mt-3">
-        <div className="col-md-2">
+      {/* banner image */}
+      <img
+        src="/images/banner.png"
+        className="banner-img"
+        alt="bannerimage"
+        width={"100%"}
+      />
+      <div className="container-fluid row mt-3 home-page">
+        <div className="col-md-3 filters">
           {/* filter for categories */}
           <h4 className="text-center">Filter by Category</h4>
           <div className="d-flex flex-column">
@@ -145,7 +155,7 @@ const HomePage = () => {
           </div>
 
           {/* Filter for price */}
-          <h4 className="text-center">Filter by Prices</h4>
+          <h4 className="text-center mt-4">Filter by Prices</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => seRadio(e.target.value)}>
               {Prices?.map((p) => (
@@ -159,7 +169,7 @@ const HomePage = () => {
           </div>
           <div className="d-flex flex-column">
             <button
-              className="btn btn-danger mt-3"
+              className="btn btn-danger"
               onClick={() => window.location.reload()}
             >
               Reset Filter
@@ -170,41 +180,49 @@ const HomePage = () => {
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((product) => (
-              <div key={product._id} className="product-link">
-                <div className="card m-2" style={{ width: "18rem" }}>
-                  <img
-                    src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
-                    className="card-img-top"
-                    alt={product.name}
-                  />
-                  <div className="card-body">
+              <div
+                key={product._id}
+                className="card m-2"
+              >
+                <img
+                  src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                  className="card-img-top"
+                  alt={product.name}
+                />
+                <div className="card-body">
+                  <div className="card-name-price">
                     <h5 className="card-title">{product.name}</h5>
-                    <p className="card-text">
-                      {product.description.substring(0, 30)}...
-                    </p>
-                    <p className="card-text">$ {product.price}</p>
-                    <div>
-                      <button
-                        className="btn btn-primary ms-1"
-                        onClick={() => navigate(`/product/${product.slug}`)}
-                      >
-                        See Details
-                      </button>
-                      <button
-                        className="btn btn-secondary ms-1"
-                        onClick={() => {
-                          setCart([...cart, product]); 
-                          // to add cart in local storage
-                          localStorage.setItem(
-                            "cart",
-                            JSON.stringify([...cart, product])
-                          );
-                          toast.success("Item added to cart");
-                        }}
-                      >
-                        Add to Cart
-                      </button>
-                    </div>
+                    <h5 className="card-title card-price">
+                      {product.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}
+                    </h5>
+                  </div>
+                  <p className="card-text ">
+                    {product.description.substring(0, 60)}...
+                  </p>
+                  <div className="card-name-price">
+                    <button
+                      className="btn btn-info ms-1"
+                      onClick={() => navigate(`/product/${product.slug}`)}
+                    >
+                      See Details
+                    </button>
+                    <button
+                      className="btn btn-dark ms-1"
+                      onClick={() => {
+                        setCart([...cart, product]);
+                        // to add cart in local storage
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, product])
+                        );
+                        toast.success("Item added to cart");
+                      }}
+                    >
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
               </div>
@@ -213,13 +231,20 @@ const HomePage = () => {
           <div className="m-2 p-3">
             {products && products.length < total && (
               <button
-                className="btn btn-warning"
+                className="btn loadmore"
                 onClick={(e) => {
                   e.preventDefault();
                   setPage(page + 1);
                 }}
               >
-                {loading ? "Loading..." : "Load More"}
+                {loading ? (
+                  "Loading ..."
+                ) : (
+                  <>
+                    {" "}
+                    Loadmore <AiOutlineReload />
+                  </>
+                )}
               </button>
             )}
           </div>

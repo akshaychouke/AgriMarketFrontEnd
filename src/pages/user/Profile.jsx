@@ -59,13 +59,13 @@ const Profile = () => {
   };
   return (
     <Layout title="Profile">
-      <div className="container-fluid p-3 m-3">
+      <div className="container-fluid p-3 dashboard">
         <div className="row">
           <div className="col-md-3">
             <UserMenu />
           </div>
-          <div className="col-md-9">
-            <div className="form-container" style={{ minHeight: "90vh" }}>
+          <div className="col-md-8">
+            <div className="form-container" style={{ marginTop: "-40px" }}>
               <form onSubmit={handleSubmit}>
                 <h4 className="title">User Profile</h4>
                 <div className="mb-3">
