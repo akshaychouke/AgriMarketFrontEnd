@@ -34,32 +34,40 @@ const Search = () => {
                   alt={product.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">
-                    {product.description.substring(0, 30)}...
+                  <div className="card-name-price">
+                    <h5 className="card-title">{product.name}</h5>
+                    <h5 className="card-title card-price">
+                      {product.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </h5>
+                  </div>
+                  <p className="card-text ">
+                    {product.description.substring(0, 60)}...
                   </p>
-                  <p className="card-text">$ {product.price}</p>
-
-                  <button
-                    className="btn btn-primary ms-1"
-                    onClick={() => navigate(`/product/${product.slug}`)}
-                  >
-                    See Details
-                  </button>
-                  <button
-                    className="btn btn-secondary ms-1"
-                    onClick={() => {
-                      setCart([...cart, product]);
-                      // to add cart in local storage
-                      localStorage.setItem(
-                        "cart",
-                        JSON.stringify([...cart, product])
-                      );
-                      toast.success("Item added to cart");
-                    }}
-                  >
-                    Add to Cart
-                  </button>
+                  <div className="card-name-price">
+                    <button
+                      className="btn btn-info ms-1"
+                      onClick={() => navigate(`/product/${product.slug}`)}
+                    >
+                      See Details
+                    </button>
+                    <button
+                      className="btn btn-secondary ms-1"
+                      onClick={() => {
+                        setCart([...cart, product]);
+                        // to add cart in local storage
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, product])
+                        );
+                        toast.success("Item added to cart");
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

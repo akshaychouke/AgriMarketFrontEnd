@@ -21,7 +21,7 @@ const CartPage = () => {
     cart?.map((item) => (total += item.price));
     return total.toLocaleString("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "INR",
     });
   };
 
