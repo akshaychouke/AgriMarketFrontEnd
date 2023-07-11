@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
 import toast from "react-hot-toast";
 import { useCart } from "../context/cart";
+import { SERVER_URL } from "../service/api";
 
 const ProductDetails = () => {
   const [cart, setCart] = useCart();
@@ -17,7 +18,7 @@ const ProductDetails = () => {
   const getProduct = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/get-product/${params.slug}`
+        `${SERVER_URL}/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
       getSimilarProducts(data?.product._id, data?.product.category._id);
@@ -37,7 +38,7 @@ const ProductDetails = () => {
   //get similar products
   const getSimilarProducts = async (pid, cid) => {
     const { data } = await axios.get(
-      `http://localhost:8080/api/v1/product/similar-products/${pid}/${cid}`
+      `${SERVER_URL}/api/v1/product/similar-products/${pid}/${cid}`
     );
     console.log("related products", data?.products);
     setRelatedProducts(data?.products);
@@ -47,7 +48,7 @@ const ProductDetails = () => {
       <div className="row container product-details">
         <div className="col-md-6">
           <img
-            src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+            src={`${SERVER_URL}/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
             alt={product.name}
             height="300"
@@ -92,7 +93,7 @@ const ProductDetails = () => {
           {relatedProducts?.map((product) => (
             <div key={product._id} className="card m-2">
               <img
-                src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                src={`${SERVER_URL}/api/v1/product/product-photo/${product._id}`}
                 className="card-img-top"
                 alt={product.name}
               />

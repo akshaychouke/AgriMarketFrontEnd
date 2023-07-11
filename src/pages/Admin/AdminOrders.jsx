@@ -6,7 +6,10 @@ import toast from "react-hot-toast";
 import moment from "moment/moment";
 import { useAuth } from "../../context/auth";
 import { Select } from "antd";
+import { SERVER_URL } from "../../service/api";
 const { Option } = Select;
+
+
 const AdminOrders = () => {
   const [status, setStatus] = useState([
     "Not processed",
@@ -22,7 +25,7 @@ const AdminOrders = () => {
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/auth/all-orders"
+        `${SERVER_URL}/api/v1/auth/all-orders`
       );
       setOrders(data);
       console.log("Orders", data);
@@ -40,7 +43,7 @@ const AdminOrders = () => {
   const handleChange = async (orderId, value) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:8080/api/v1/auth/order-status/${orderId}`,
+        `${SERVER_URL}/api/v1/auth/order-status/${orderId}`,
         { status: value }
       );
       getOrders();
@@ -89,7 +92,7 @@ const AdminOrders = () => {
                           </Select>
                         </td>
                         <td>{o?.buyer?.name}</td>
-                        <td>{moment(o?.createAt).fromNow()}</td>
+                        <td>{moment(o?.createdAt).fromNow()}</td>
                         <td>{o?.payment.success ? "Success" : "Failed"}</td>
                         <td>{o?.products?.length}</td>
                       </tr>
@@ -100,7 +103,7 @@ const AdminOrders = () => {
                       <div className="row mb-2 p-3 card flex-row" key={p._id}>
                         <div className="col-md-4">
                           <img
-                            src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                            src={`${SERVER_URL}/api/v1/product/product-photo/${p._id}`}
                             className="card-img-top"
                             alt={p.name}
                             width="100px"

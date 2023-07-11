@@ -4,9 +4,9 @@ import { BiMailSend, BiPhoneCall, BiSupport } from "react-icons/bi";
 const Contact = () => {
   return (
     <Layout title={"Contact us"}>
-      <div className="row contactus ">
+      <div className="row contactus mt-4 p-5">
         {/* // Bootstrap Grid System for responsive design */}
-        <div className="col-md-6 ">
+        <div className="col-md-6">
           <img
             src="/images/contactus.jpeg" // Path: public\images\contactus.jpeg
             alt="contactus"
@@ -15,7 +15,7 @@ const Contact = () => {
         </div>
 
         {/* // Bootstrap Grid System for responsive design */}
-        <div className="col-md-4">
+        <div className="col-md-6">
           <h1 className="bg-dark p-2 text-white text-center">CONTACT US</h1>
           <p className="text-justify mt-2">
             Any query and info about product feel free to call anytime we are

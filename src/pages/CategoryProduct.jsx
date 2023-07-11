@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../styles/CategoryProductStyles.css";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
+import { SERVER_URL } from "../service/api";
 
 const CategoryProduct = () => {
   const [cart, setCart] = useCart();
@@ -15,7 +16,7 @@ const CategoryProduct = () => {
   const getProductByCategory = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-category/${params.slug}`
+        `${SERVER_URL}/api/v1/product/product-category/${params.slug}`
       );
       setProducts(data?.products);
       setCategory(data?.category);
@@ -39,7 +40,7 @@ const CategoryProduct = () => {
                 <div key={product._id} className="card m-2">
                   <div className="card m-2" style={{ width: "18rem" }}>
                     <img
-                      src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                      src={`${SERVER_URL}/api/v1/product/product-photo/${product._id}`}
                       className="card-img-top"
                       alt={product.name}
                     />

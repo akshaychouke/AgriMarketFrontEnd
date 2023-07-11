@@ -5,15 +5,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Modal } from "antd";
 import CategoryForm from "../../components/Form/CategoryForm";
-
+import { SERVER_URL } from "../../service/api";
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [updatedCategory, setUpdatedCategory] = useState("");
-  const API_URL = "http://localhost:8080/api/v1/category";
-
+  const API_URL = `${SERVER_URL}/api/v1/category`;
   //Modal
   const [isModalVisible, setIsModalVisible] = useState(false);
 

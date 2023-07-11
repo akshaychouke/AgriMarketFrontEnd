@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
+import { SERVER_URL } from "../../service/api";
 const { Option } = Select;
 
 const CreateProduct = () => {
@@ -17,7 +18,7 @@ const CreateProduct = () => {
   const [photo, setPhoto] = useState("");
   const [shipping, setShipping] = useState("");
   const navigate = useNavigate();
-  const API_URL = "http://localhost:8080/api/v1";
+  const API_URL = `${SERVER_URL}/api/v1`;
 
   //get categories from backend
   const getAllCategories = async () => {

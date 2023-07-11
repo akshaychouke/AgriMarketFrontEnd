@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { SERVER_URL } from "../service/api";
 const useCategory = () => {
   const [categories, setCategories] = useState([]);
 
@@ -7,7 +8,7 @@ const useCategory = () => {
   const getcategories = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/v1/category/get-Categories"
+        `${SERVER_URL}/api/v1/category/get-Categories`
       );
       setCategories(data?.categories);
     } catch (error) {

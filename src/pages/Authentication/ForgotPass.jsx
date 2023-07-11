@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.css";
-
+import { SERVER_URL } from "../../service/api";
 //coponent to reset password of a user
 const ForgotPass = () => {
   const [email, setEmail] = useState("");
@@ -13,13 +13,13 @@ const ForgotPass = () => {
   const [answer, setAnswer] = useState("");
   const navigate = useNavigate();
 
-  const API_URL = "http://localhost:8080";
+
   //function to handle the submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${API_URL}/api/v1/auth/forgot-password`,
+        `${SERVER_URL}/api/v1/auth/forgot-password`,
         {
           email,
           answer,

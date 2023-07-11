@@ -80,6 +80,7 @@ body {
   color: #ffefba;
   border-bottom: 1px solid #ffefba;
 }
+
 /* =================================
 ======== page not found css ======= */
 .pnf {
@@ -115,10 +116,11 @@ body {
 .contactus {
   margin: 0;
   padding: 0;
-  height: 70vh;
-  display: flex;
+  /* height: 70vh; */
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  margin-top: 20px !important;
 }
 
 /* ==================== */
@@ -154,5 +156,5 @@ body {
 .carousel-item > img {
   height: 400px;
   width: 100%;
-  object-fit:fill
+  object-fit: fill;
 }

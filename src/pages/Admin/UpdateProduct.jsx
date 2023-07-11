@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
+import { SERVER_URL } from "../../service/api";
 const { Option } = Select;
 
 const UpdateProduct = () => {
@@ -19,7 +20,7 @@ const UpdateProduct = () => {
   const [id, setId] = useState("");
   const navigate = useNavigate();
   const paramas = useParams();
-  const API_URL = "http://localhost:8080/api/v1";
+  const API_URL = `${SERVER_URL}/api/v1`;
 
   //get single product from backend
   const getSingleProduct = async () => {
@@ -171,7 +172,7 @@ const UpdateProduct = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`http://localhost:8080/api/v1/product/product-photo/${id}`}
+                      src={`${API_URL}/product/product-photo/${id}`}
                       alt="product Image"
                       height={"150px"}
                       className="img img-responsive"

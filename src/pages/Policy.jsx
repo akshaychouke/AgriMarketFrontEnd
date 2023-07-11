@@ -4,7 +4,7 @@ import Layout from "./../components/Layout/Layout";
 const Policy = () => {
   return (
     <Layout title={"Privacy Policy"}>
-      <div className="p-3 m-3">
+      <div className="p-3 m-4">
         <h1 className="text-center">
           Privacy Policy for Farming E-commerce Website
         </h1>

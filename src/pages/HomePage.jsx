@@ -9,6 +9,9 @@ import { useCart } from "../context/cart";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
 import SliderImage from "./SliderImage";
+import { SERVER_URL } from "../service/api";
+
+
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useCart();
@@ -19,7 +22,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const API_URL = "http://localhost:8080/api/v1";
+  const API_URL = `${SERVER_URL}/api/v1`;
 
   //get categories from backend
   const getAllCategories = async () => {
@@ -178,7 +181,7 @@ const HomePage = () => {
             {products?.map((product) => (
               <div key={product._id} className="card m-2">
                 <img
-                  src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                  src={`${API_URL}/product/product-photo/${product._id}`}
                   className="card-img-top"
                   alt={product.name}
                 />

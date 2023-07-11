@@ -5,10 +5,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Checkbox } from "antd";
-
+import { SERVER_URL } from "../../service/api";
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const API_URL = "http://localhost:8080/api/v1/product";
+  const API_URL = `${SERVER_URL}/api/v1/product`;
 
   //to get all products
   const getAllProducts = async () => {
@@ -43,7 +43,7 @@ const Products = () => {
                 >
                   <div className="card m-2" style={{ width: "18rem" }}>
                     <img
-                      src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                      src={`${SERVER_URL}/api/v1/product/product-photo/${product._id}`}
                       className="card-img-top"
                       alt={product.name}
                     />

@@ -5,6 +5,7 @@ import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { SERVER_URL } from "../../service/api";
 const Profile = () => {
   const navigate = useNavigate();
   //auth context
@@ -16,7 +17,6 @@ const Profile = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const API_URL = "http://localhost:8080";
 
   useEffect(() => {
     const { name, email, phone, address, password } = auth?.user;
@@ -30,7 +30,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`${API_URL}/api/v1/auth/profile`, {
+      const { data } = await axios.put(`${SERVER_URL}/api/v1/auth/profile`, {
         name,
         email,
         password,

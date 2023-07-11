@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 import toast from "react-hot-toast";
 import { useCart } from "../context/cart";
+import { SERVER_URL } from "../service/api";
 
 const Search = () => {
   const [cart, setCart] = useCart();
@@ -29,7 +30,7 @@ const Search = () => {
                 key={product._id}
               >
                 <img
-                  src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                  src={`${SERVER_URL}/api/v1/product/product-photo/${product._id}`}
                   className="card-img-top"
                   alt={product.name}
                 />

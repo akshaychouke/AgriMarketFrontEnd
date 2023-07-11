@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.css";
+import { SERVER_URL } from "../../service/api";
 //coponent to register a new user
 const Register = () => {
   const [name, setName] = useState("");
@@ -15,13 +16,11 @@ const Register = () => {
   const [answer, setAnswer] = useState("");
   const navigate = useNavigate();
 
-  const API_URL = "http://localhost:8080";
-
   //function to handle the submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/api/v1/auth/register`, {
+      const response = await axios.post(`${SERVER_URL}/api/v1/auth/register`, {
         name,
         email,
         password,

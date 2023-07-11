@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../../styles/AuthStyles.css";
 import { useAuth } from "../../context/auth";
+import { SERVER_URL } from "../../service/api";
 //coponent to login a user
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,12 +14,12 @@ const Login = () => {
   const [auth, setAuth] = useAuth(); //custom hook
   const navigate = useNavigate();
   const location = useLocation(); //to get the location of the previous page
-  const API_URL = "http://localhost:8080";
+  
   //function to handle the submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/api/v1/auth/login`, {
+      const response = await axios.post(`${SERVER_URL}/api/v1/auth/login`, {
         email,
         password,
       });
