@@ -41,15 +41,29 @@ const Products = () => {
                   key={product._id}
                   className="product-link"
                 >
-                  <div className="card m-2" style={{ width: "18rem" }}>
+                  <div
+                    key={product._id}
+                    className="card m-2"
+                    style={{ width: "18rem" }}
+                  >
                     <img
                       src={`${SERVER_URL}/api/v1/product/product-photo/${product._id}`}
                       className="card-img-top"
                       alt={product.name}
                     />
                     <div className="card-body">
-                      <h5 className="card-title">{product.name}</h5>
-                      <p className="card-text">{product.description}</p>
+                      <div className="card-name-price">
+                        <h5 className="card-title">{product.name}</h5>
+                        <h5 className="card-title card-price">
+                          {product.price.toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "INR",
+                          })}
+                        </h5>
+                      </div>
+                      <p className="card-text ">
+                        {product.description.substring(0, 60)}...
+                      </p>
                     </div>
                   </div>
                 </Link>
