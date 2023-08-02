@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+<h2>Welcome to AgriMarket</h2>
+<h3>Note - As this is deployed on free hosting servive render so you might face slow service so please wait until it is loaded totally</h3>
+<p>
+Welcome to AgriMarket, your one-stop destination for all your agricultural needs! Our innovative ecommerce platform is specifically designed to cater to farmers, providing them with a convenient and efficient way to buy and sell old farming equipment and accessories, such as fertilizers and more.
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>
+At AgriMarket, we understand the importance of modernizing agricultural practices while also honoring traditional methods. With our user-friendly interface, farmers can easily list their old or surplus farming equipment for sale. Whether it's tractors, plows, harvesters, irrigation systems, or other machinery, farmers can find a wide range of options to choose from.
 
-## Available Scripts
+</p>
 
-In the project directory, you can run:
+<p>
+On the other hand, if you're looking to upgrade your farming setup or expand your agricultural operations, AgriMarket offers an extensive collection of high-quality farming equipment and accessories. Our curated selection includes top-notch fertilizers, seeds, pesticides, and other essential items that can enhance your crop yields and overall farm productivity.
+</p>
 
-### `npm start`
+<p>
+Why choose AgriMarket? We have taken every measure to ensure that the buying and selling experience on our platform is seamless and secure. Our transparent pricing system allows farmers to get the best value for their old equipment while enabling buyers to find competitive deals. Additionally, our platform is designed to foster a sense of community, where farmers can connect with each other, exchange knowledge, and share valuable insights for better farming practices.
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p>
+Join AgriMarket today and experience a revolutionary way to buy and sell old farming equipment and essential accessories. Whether you're a seasoned farmer or just starting in the industry, we are committed to supporting your agricultural journey every step of the way. Together, let's grow a greener, more prosperous future for agriculture!
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p>
+<img src="./ss1.png" alt="preview1">
+</p>
 
-### `npm test`
+<p>
+<img src="./ss2.png" alt="preview2">
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>
+<img src="./ss3.png" alt="preview3">
+</p>
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<p>
+<img src="./ss4.png" alt="preview4">
+</p>
