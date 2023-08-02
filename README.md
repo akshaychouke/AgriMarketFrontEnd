@@ -1,5 +1,5 @@
 <h2>Welcome to AgriMarket</h2>
-<h3>Note - As this is deployed on free hosting servive render so you might face slow service so please wait until it is loaded totally</h3>
+<h3>Note - As this is deployed on free hosting service render so you might face slow service so please wait until it is loaded totally</h3>
 <p>
 Welcome to AgriMarket, your one-stop destination for all your agricultural needs! Our innovative ecommerce platform is specifically designed to cater to farmers, providing them with a convenient and efficient way to buy and sell old farming equipment and accessories, such as fertilizers and more.
 </p>
